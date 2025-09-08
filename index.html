@@ -13,7 +13,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: url("background.png") no-repeat center center fixed;
-      background-size: cover; /* imagem ocupa a tela toda */
+      background-size: cover;
       color: #ffffff;
       text-align: center;
     }
@@ -73,6 +73,8 @@
       transition: 0.3s;
       display: inline-block;
       margin: 5px;
+      cursor: pointer;
+      border: none;
     }
 
     .btn:hover {
@@ -85,11 +87,11 @@
       border-radius: 15px;
       padding: 20px;
       margin: 20px auto;
-      max-width: 600px;   /* largura máxima menor */
-      width: 90%;         /* ocupa 90% no mobile */
+      max-width: 600px;
+      width: 90%;
       box-sizing: border-box;
       color: #000;
-      text-align: center; /* texto centralizado */
+      text-align: center;
     }
 
     footer {
@@ -109,12 +111,14 @@
 <body>
 
   <header>
-    <h1 class="main-title">USDUT</h1>
+    <h1 class="main-title"></h1>
     <p class="subtitle">Stability is the weakness of the modern world.</p>
-    <a href="https://pump.fun/" target="_blank" class="btn">buy now</a>
+    
+    <!-- Copy CA Button -->
+    <button class="btn" onclick="copyCA()">Copy CA</button>
 
     <!-- Contract Address -->
-    <p class="contract">5U42tCTe9vk4F8SFyx1YowbzPdxtMAU35AGb6ifpump</p>
+    <p class="contract" id="contract">5U42tCTe9vk4F8SFyx1YowbzPdxtMAU35AGb6ifpump</p>
 
     <hr class="divider">
   </header>
@@ -153,6 +157,17 @@
     <a href="https://t.me/USDUT_CTO_SOL" target="_blank">Telegram</a>
     <a href="https://dexscreener.com/solana/5U42tCTe9vk4F8SFyx1YowbzPdxtMAU35AGb6ifpump" target="_blank">DexScreener</a>
   </footer>
+
+  <script>
+    function copyCA() {
+      const ca = document.getElementById("contract").innerText;
+      navigator.clipboard.writeText(ca).then(() => {
+        alert("CA copied to clipboard!");
+      }).catch(err => {
+        alert("Failed to copy: " + err);
+      });
+    }
+  </script>
 
 </body>
 </html>
